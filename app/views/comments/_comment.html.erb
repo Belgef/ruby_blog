@@ -1,15 +1,19 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-</p>
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <%= image_tag("user.png", :alt => "User Photo") %>
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= comment.commenter %></strong> <small> on <%= comment.created_at.strftime('%d.%m.%Y %H:%M') %></small>
+          <br>
+          <%= comment.body %>
+        </p>
+      </div>
+    </div>
+    <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= article_comment_path(comment.article, comment) %>" class='delete'></a>
+  </article>
+</div>

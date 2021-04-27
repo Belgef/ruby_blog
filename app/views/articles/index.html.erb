@@ -1,13 +1,48 @@
-<h1>Articles</h1>
-
-Our blog has <%= Article.public_count %> articles and counting!
-
-<ul>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "New Article", new_article_path %>
+ <section class="hero is-link is-halfheight is-bold is-italic no-overflow">
+  <div class="hero-head">
+    <%= render "navbar" %>
+  </div>
+  <%= image_tag("hero-bg.jpg", :class => "hero-background is-transparent", :alt => "Things on table") %>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1">My Rails Blog</h1>
+      <h1 class="subtitle is-3">Our blog has <%= Article.public_count %> articles and counting!</h1>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <section class="articles">
+    <div class="container is-max-widescreen">
+      <% (0..@articles.size).step(6) do |k| %>
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <%= render @articles[k] %>
+            <% if(k+1 < @articles.size) %>
+              <%= render @articles[k+1]%>
+            <% end %>
+          </div>
+          <div class="tile is-parent is-bigger">
+            <% if(k+2 < @articles.size) %>
+              <%= render @articles[k+2]%>
+            <% end %>
+          </div>
+        </div>
+        <div class="tile is-parent is-bigger">
+          <% if(k+3 < @articles.size) %>
+            <%= render @articles[k+3]%>
+          <% end %>
+        </div>
+        <div class="tile is-parent is-vertical">
+          <% if(k+4 < @articles.size) %>
+            <%= render @articles[k+4]%>
+          <% end %>
+          <% if(k+5 < @articles.size) %>
+            <%= render @articles[k+5]%>
+          <% end %>
+        </div>
+      <% end %>
+      <%= link_to "New Article", new_article_path, :class => 'button is-info is-large level-item' %>
+      <br>
+    </div>
+  </section>
+</div>

@@ -1,18 +1,36 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<article class="media">
+  <div class="media-content">
+    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+      <div class="field">
+        <div class="control has-icons-left">
+          <%= form.text_field :commenter, :class => "input", :placeholder => "Username" %>
+          <span class="icon is-small is-left">
+            <i class="fa fa-user"></i>
+          </span>
+        </div>
+      </div>
+      <div class="field">
+        <p class="control">
+          <%= form.text_area :body, :class => "textarea", :placeholder => "Comment" %>
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+            <div class="label spaced">
+              <%= form.label :status, :class => "title is-6 is-centered" %>
+            </div>
+            <div class="select">
+              <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+            </div>
+        </div>
+        <div class="level-right">
+          <div class='field has-text-centered'>
+            <div class='control'>
+              <%= form.submit "Add comment", :class => 'button is-link'%>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+  </div>
+</article>

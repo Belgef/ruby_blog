@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+ @import "bulma";
+ @import "font-awesome";
+
+ .hero{
+  &.has-background{
+    position: relative;
+    overflow: hidden;
+  }
+  &-background{
+    position: absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    &.is-transparent{
+      opacity: 0.3;
+    }
+  }
+}
+.no-overflow{
+  position: relative;
+  overflow: hidden;
+}
+.spaced{
+  margin-right: 1em;
+}
+.small-spaced{
+  margin-right: 0.4em;
+}
+.is-bigger{
+  font-size:150%;
+}
+.transparent{
+  background-color: rgba(35, 102, 209, 0.5);
+}
+.custom-height{
+  max-height: 2.5rem !important;
+}
