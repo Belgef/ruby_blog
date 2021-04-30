@@ -3,6 +3,7 @@
     <div class="media-content has-text-centered">
       <%= link_to article.title, article, :class => 'title article-title' %>
       <div class="tags has-addons level-item level-right">
+        <span class="tag is-rounded"><%= link_to Category.find(article.category_id).name, category_path(article.category_id) %></span>
         <span class="tag is-rounded is-info">posted at</span>
         <span class="tag is-rounded"><%= article.created_at.strftime('%d.%m.%Y %H:%M') %></span>
       </div>

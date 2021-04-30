@@ -1,0 +1,25 @@
+ <section class="hero is-link is-halfheight is-bold is-italic no-overflow">
+  <div class="hero-head">
+    <%= render "navbar" %>
+  </div>
+  <%= image_tag("hero-bg.jpg", :class => "hero-background is-transparent", :alt => "Things on table") %>
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1">My Rails Blog</h1>
+      <h1 class="subtitle is-3">Explore categories!</h1>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <section class="articles">
+    <div class="container is-max-widescreen">
+      <% @categories.each do |category| %>
+        <div class="tile is-parent">
+          <%= render category %>
+        </div>
+      <% end %>
+      <%= link_to "New Category", new_category_path, :class => 'button is-info is-large level-item' %>
+      <br>
+    </div>
+  </section>
+</div>

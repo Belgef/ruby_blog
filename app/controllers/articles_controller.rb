@@ -12,10 +12,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def create
     @article = Article.new(article_params)
+    @article.category_id = params[:category_id] 
 
     if @article.save
       redirect_to @article
@@ -26,10 +28,12 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def update
     @article = Article.find(params[:id])
+    @article.category_id = params[:category_id]
 
     if @article.update(article_params)
       redirect_to @article

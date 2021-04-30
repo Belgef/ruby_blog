@@ -1,0 +1,10 @@
+<div class="tile is-child box">
+  <div class="media">
+    <div class="media-content has-text-centered">
+      <%= link_to category.name, category, :class => 'title article-title' %>
+    </div>
+  </div>
+  <div class="content article-body">
+    <p><%= category.desc.split(' ')[0,80].inject{|sum,word| sum + ' ' + word} + (category.desc.split.size > 20 ? '...' : '') %></p>
+  </div>
+</div>

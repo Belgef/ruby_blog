@@ -2,10 +2,12 @@
   <div class='section is-medium'>
     <div class="container is-max-widescreen">
       <div class='control'>
-        <h1 class="title is-2">Edit Article</h1>
+        <h1 class="title is-2">Create new category</h1>
         <br>
       </div>
-      <%= render "form", article: @article %>
+      <%= render "form", category: @category %>
+      <br>
+      <%= link_to 'Back', categories_path, :class => 'button is-warning' %>
     </div>
   </div>
 </section>
