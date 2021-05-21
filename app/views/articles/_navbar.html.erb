@@ -18,18 +18,6 @@
         <a class="navbar-item" href="../categories">
           Explore
         </a>
-        <a class="navbar-item">
-          Features
-        </a>
-        <a class="navbar-item">
-          Team
-        </a>
-        <a class="navbar-item">
-          Archives
-        </a>
-        <a class="navbar-item">
-          Help
-        </a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             Account
@@ -49,6 +37,18 @@
               Logout
             </a>
           </div>
+        </div>
+        <div class="navbar-item">
+          <%= form_tag(search_article_path, :method => "get") do %>  
+            <div class="field has-addons">  
+              <div class="control">  
+                <%= search_field_tag :search, params[:search], placeholder: "Find an article", class: "input" %>  
+              </div>  
+              <div class="control">  
+                <%= button_tag "Search", :class => 'button is-link',:name => nil%>  
+              </div>  
+            </div>  
+          <% end %>
         </div>
       </div>
     </div>

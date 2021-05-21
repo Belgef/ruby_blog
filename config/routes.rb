@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   match 'tagged' => 'articles#tagged', :as => 'tagged', :via => :get
+
+  get '/search' => 'articles#search', :as => 'search_article'
 end

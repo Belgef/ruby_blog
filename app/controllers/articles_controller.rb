@@ -60,6 +60,17 @@ class ArticlesController < ApplicationController
     @custom_paginate_renderer = custom_paginate_renderer
   end
 
+  def search  
+    if params[:search].blank?  
+      redirect_to(root_path, alert: "Empty field!") and return  
+    else  
+      @parameter = params[:search].downcase  
+      @articles = Article.where('lower(title) LIKE :search OR lower(body) LIKE :search', search: "%#{@parameter}%").order(:created_at)
+      @articles = @articles.paginate(:page => params[:page], :per_page => 2).order(id: :desc)
+      @custom_paginate_renderer = custom_paginate_renderer
+    end  
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :body, :status)
