@@ -50,6 +50,16 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def tagged
+    if params[:tag].present? 
+      @articles = Article.tagged_with(params[:tag])
+    else 
+      @articles = Article.postall
+    end  
+    @articles = @articles.paginate(:page => params[:page], :per_page => 2).order(id: :desc)
+    @custom_paginate_renderer = custom_paginate_renderer
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :body, :status)

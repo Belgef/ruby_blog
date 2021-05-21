@@ -12,4 +12,8 @@
   <div class="content article-body">
     <p><%= article.body.split(' ')[0,80].inject{|sum,word| sum + ' ' + word} + (article.body.split.size > 80 ? '...' : '') %></p>
   </div>
+  <% article.tags.any? %>
+    <% article.tags.each do |tag| %>
+    <%= link_to tag.name, tagged_url(:tag => tag.name), :class => 'tag' %>
+  <% end %>
 </div>
