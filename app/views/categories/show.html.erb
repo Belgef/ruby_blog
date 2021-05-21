@@ -16,9 +16,10 @@
     </div>
   </div>
   <div class="container is-max-desktop">
+    <h1 class='title is-4'>Articles</h2>
+    <%= render @articles %>
     <div class='block'>
-      <h1 class='title is-4'>Articles</h2>
-      <%= render @category.articles %>
+      <%= will_paginate @articles, renderer: @custom_paginate_renderer %>
     </div>
   </div>
 </div>

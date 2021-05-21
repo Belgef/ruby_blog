@@ -3,25 +3,22 @@ class CategoriesController < ApplicationController
 
   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
   
-  # GET /categories or /categories.json
   def index
     @categories = Category.all
   end
 
-  # GET /categories/1 or /categories/1.json
   def show
+    @articles = @category.articles.paginate(:page => params[:page], :per_page => 2).order(id: :desc)
+    @custom_paginate_renderer = custom_paginate_renderer
   end
 
-  # GET /categories/new
   def new
     @category = Category.new
   end
 
-  # GET /categories/1/edit
   def edit
   end
 
-  # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
 
