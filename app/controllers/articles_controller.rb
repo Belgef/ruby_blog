@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @articles = Article.page(params[:page]).order('created_at DESC')
@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.category_id = params[:category_id] 
+    @article.user = current_user
 
     if @article.save
       redirect_to @article

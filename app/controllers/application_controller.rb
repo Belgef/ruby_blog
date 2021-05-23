@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   def custom_paginate_renderer
     # Return nice pagination for materialize
     Class.new(WillPaginate::ActionView::LinkRenderer) do
@@ -79,4 +80,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :current_password])
+  end 
 end

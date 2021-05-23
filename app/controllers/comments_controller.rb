@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
-
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
-
+  
+  before_action :authenticate_user!, except: [:show]
+  
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    @comment = @article.comments.create(comment_params.merge(:user => current_user))
+    @comment.user = current_user
     redirect_to article_path(@article)
   end
 

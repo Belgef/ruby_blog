@@ -2,6 +2,23 @@
   <div class="container is-max-widescreen">
     <div class='article'>
       <h1 class="title is-2 is-spaced"><%= @article.title %></h1>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <span class="tag is-link is-medium"><%= link_to Category.find(@article.category_id).name, category_path(@article.category_id) %></span>
+        </div>
+        <div class="control">
+          <div class="tags has-addons are-medium">
+            <span class="tag">Posted at</span>
+            <span class="tag is-link"><%= @article.created_at.strftime('%d.%m.%Y %H:%M') %></span>
+          </div>
+        </div>
+        <div class="control">
+          <div class="tags has-addons are-medium">
+            <span class="tag">Author</span>
+            <span class="tag is-link"><%= @article.user.try(:username) %></span>
+          </div>
+        </div>
+      </div>
       <h2 class="subtitle is-5">
         <%= simple_format(@article.body) %>
       </h2>

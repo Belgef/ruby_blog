@@ -1,0 +1,46 @@
+<section class="hero is-small is-fullheight">
+  <div class='section is-medium'>
+    <div class="container is-max-widescreen">
+      <div class='control'>
+        <h1 class="title is-2">Log in</h1>
+        <br>
+      </div>
+      <article class="media">
+        <div class="media-content">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+            <div class="field">
+              <div class="control">
+                <%= form.label :email, :class => 'title is-6' %>
+                <%= form.email_field :email, autofocus: true, autocomplete: "email", :class => "input" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <%= form.label :password, :class => 'title is-6' %>
+                <% if @minimum_password_length %>
+                  <em class = 'subtitle is-6'>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %>
+                <%= form.password_field :password, autocomplete: "current-password", :class => "input" %>
+              </div>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= form.label(:foo, form.check_box(:remember_me)+"Remember me", class: 'checkbox' )%>
+                
+              </div>
+            <% end %>
+
+            <div class='field has-text-centered'>
+              <div class='control actions'>
+                <%= form.submit "Log in", :class => 'button is-link'%>
+              </div>
+            </div>
+          <% end %>
+          <div class='link'><%= render "devise/shared/links"%></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

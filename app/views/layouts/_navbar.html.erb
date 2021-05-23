@@ -18,26 +18,26 @@
         <a class="navbar-item" href="../categories">
           Explore
         </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Account
-          </a>
-          <div class="navbar-dropdown transparent">
-            <a class="navbar-item">
-              Dashboard
-            </a>
-            <a class="navbar-item">
-              Profile
-            </a>
-            <a class="navbar-item">
-              Settings
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Logout
-            </a>
+        <% if user_signed_in? %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <p class='navbar-link'><%= current_user.username%></p>
+            <div class="navbar-dropdown transparent">
+              <%= link_to "Edit account", edit_user_registration_path, :class => 'navbar-item'%>
+              <a class="navbar-item">
+                Profile
+              </a>
+              <a class="navbar-item">
+                Settings
+              </a>
+              <hr class="navbar-divider">
+              <%= link_to "Sign out", destroy_user_session_path, :class => 'navbar-item', :method => :delete %>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <a class="navbar-item" href=<%= new_user_session_path %>>
+            Log in
+          </a>
+        <% end %>
         <div class="navbar-item">
           <%= form_tag(search_article_path, :method => "get") do %>  
             <div class="field has-addons">  

@@ -13,9 +13,21 @@
   <body class='hero is-link no-overflow is-fullheight'>
     <div class='hero'>
       <%= image_tag("hero-bg.jpg", :class => "hero-background is-transparent", :alt => "Things on table") %>
-      <%= render "navbar" %>
+      <%= render "layouts/navbar" %>
     </div>
+    <% unless notice.nil? %>
+      <div class="notification is-link">
+        <button class="delete"></button>
+        <p id="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% unless alert.nil? %>
+      <div class="notification is-danger">
+        <button class="delete"></button>
+        <p id="alert"><%= alert %></p>
+      </div>
+    <% end %>
     <%= yield %>
-    <%= render "footer" %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

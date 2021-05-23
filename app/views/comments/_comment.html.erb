@@ -8,7 +8,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= comment.commenter %></strong> <small> on <%= comment.created_at.strftime('%d.%m.%Y %H:%M') %></small>
+          <strong><%= comment.user.username %></strong> <small> on <%= comment.created_at.strftime('%d.%m.%Y %H:%M') %></small>
           <br>
           <%= comment.body %>
         </p>

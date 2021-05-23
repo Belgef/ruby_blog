@@ -66,3 +66,6 @@ gem 'will_paginate', '~> 3.3'
 
 # Add tags using act-as-taggable-on
 gem 'acts-as-taggable-on', '~> 7.0'
+
+# Authentication
+gem 'devise'
