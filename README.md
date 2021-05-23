@@ -1,24 +1,27 @@
 # README
+Контрольна робота Гірний Микола ПЗ-26
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version: 2.7.3
 
-Things you may want to cover:
+Завдання (+ - виконано)
++ getting started - 5
++ автентифікація різними користувачами - 2
++ авторизація (перевірка дозволу виконання дій юзером) - 3 
++ (режим адміністратора ще +1)
++ фільтрування (на приклад постів за категоріями) - 2
++ фільтрування за тегами - 2
++ пагінація - 2
++ пошук (за початком назви поста на приклад) - 2
+- завантаження картинок - 2 (завантаження на хмарне сховище типу S3 - ще +2)
++ розгортання на heroku - 3
+- тести до вашого коду - 1-3
+- JSON API + окремий клієнт - 2 (тут же JWT автентифікація - ще +2)
+- Docker Compose - 3
 
-* Ruby version
+Кожну фічу я окремо комітив
 
-* System dependencies
+Від себе додано дизайн нової сторінки за допомогою bulma
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Створено один акаунт адміністратора
+email: admin@gmail.com
+password: password1234
