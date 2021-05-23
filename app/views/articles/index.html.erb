@@ -10,6 +10,8 @@
     <div class='block'>
       <%= will_paginate @articles, renderer: @custom_paginate_renderer %>
     </div>
-    <%= link_to "New Article", new_article_path, :class => 'button is-info is-large level-item' %>
+    <% if !current_user.nil? %>
+      <%= link_to "New Article", new_article_path, :class => 'button is-info is-large level-item' %>
+    <% end %>
   </div>
 </div>

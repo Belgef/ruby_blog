@@ -87,4 +87,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :current_password])
   end 
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
+  end
 end

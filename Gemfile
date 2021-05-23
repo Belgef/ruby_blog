@@ -69,3 +69,7 @@ gem 'acts-as-taggable-on', '~> 7.0'
 
 # Authentication
 gem 'devise'
+
+# Authorization
+gem 'rolify'
+gem 'cancancan'

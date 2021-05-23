@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :tagged]
+  
+  load_and_authorize_resource
 
   def index
     @articles = Article.page(params[:page]).order('created_at DESC')
@@ -74,7 +76,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      params.require(:article).permit(:title, :body, :status, :tag_list)
     end
 
 end

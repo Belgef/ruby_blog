@@ -14,6 +14,8 @@
         </p>
       </div>
     </div>
-    <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= article_comment_path(comment.article, comment) %>" class='delete'></a>
+    <% if !current_user.nil? && (current_user==comment.user || current_user.admin?) %>
+      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= article_comment_path(comment.article, comment) %>" class='delete'></a>
+    <% end %>
   </article>
 </div>

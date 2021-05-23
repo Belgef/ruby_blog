@@ -22,13 +22,19 @@
       <h2 class="subtitle is-5">
         <%= simple_format(@article.body) %>
       </h2>
-      <div class="buttons level-right">
-        <%= link_to "Edit", edit_article_path(@article), :class => "button is-warning is-small" %>
-        <%= link_to "Destroy", article_path(@article),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" },
-                      :class => "button is-danger is-small"  %>
-      </div>
+      <% @article.tags.any? %>
+        <% @article.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_url(:tag => tag.name), :class => 'tag' %>
+      <% end %>
+      <% if !current_user.nil? && (current_user==@article.user || current_user.admin?) %>
+        <div class="buttons level-right">
+          <%= link_to "Edit", edit_article_path(@article), :class => "button is-warning is-small" %>
+          <%= link_to "Destroy", article_path(@article),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" },
+                        :class => "button is-danger is-small"  %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="container is-max-desktop">
