@@ -1,16 +1,32 @@
-<h2>Forgot your password?</h2>
+<section class="hero is-small is-fullheight">
+  <div class='section is-medium'>
+    <div class="container is-max-widescreen">
+      <div class='control'>
+        <h1 class="title is-2">Forgot your password?</h1>
+        <br>
+      </div>
+      <article class="media">
+        <div class="media-content">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |form| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="field">
+              <div class="control">
+                <%= form.label :email, :class => 'title is-6' %>
+                <%= form.email_field :email, autofocus: true, autocomplete: "email", :class => "input" %>
+              </div>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <div class='field has-text-centered'>
+              <div class='control actions'>
+                <%= form.submit "Send me reset password instructions", :class => 'button is-link'%>
+              </div>
+            </div>
+          <% end %>
+          
+          <%= render "devise/shared/links" %>
+        </div>
+      </article>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
