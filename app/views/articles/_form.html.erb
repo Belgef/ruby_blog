@@ -23,7 +23,7 @@
         <div class="control">
           <%= form.label :category, :class => 'title is-6' %>
           <div class="select">
-            <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select one!") %>
+            <%= select_tag(:category_id, options_for_select(@categories, @category)) %>
           </div>
         </div>
       </div>

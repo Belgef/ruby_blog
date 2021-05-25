@@ -38,7 +38,8 @@
               </div>
             </div>
           <% end %>
-          <div class='link'><%= render "devise/shared/links"%></div>
+          <p class='subtitle is-6'>Don't have an account?</p>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'link'%>
         </div>
       </article>
     </div>

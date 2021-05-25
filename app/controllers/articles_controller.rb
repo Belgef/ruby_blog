@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show, :tagged]
+  before_action :authenticate_user!, except: [:index, :show, :tagged, :search]
   
   load_and_authorize_resource
 
@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @category = Category.all.select { |c| c.id = @article.category_id }
   end
 
   def create
@@ -33,6 +34,7 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
     @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @category = @categories.select { |c| c[1].to_f==@article.category_id.to_f }.first
   end
 
   def update
