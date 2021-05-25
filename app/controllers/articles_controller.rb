@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @categories = Category.all.map{|c| [ c.name, c.id ] }
-    @category = Category.all.select { |c| c.id = @article.category_id }
+    @category = ''
   end
 
   def create
